@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="css/tailwind.css" rel="stylesheet">
+    <title>Inicio de Sesión</title>
+</head>
+<body class="bg-gray-100 flex items-center justify-center h-screen">
+    <div class="bg-white p-8 rounded shadow-md w-96">
+        <h2 class="text-2xl font-bold mb-4 text-center">Inicio de Sesión</h2>
+        <form action="../controllers/login.php" method="POST">
+            <div class="mb-4">
+                <label for="usuario" class="block text-gray-700">Usuario</label>
+                <input type="text" id="usuario" name="usuario" class="w-full p-2 border rounded" required>
+            </div>
+            <div class="mb-4">
+                <label for="contrasena" class="block text-gray-700">Contraseña</label>
+                <input type="password" id="contrasena" name="contrasena" class="w-full p-2 border rounded" required>
+            </div>
+            <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded w-full">Ingresar</button>
+        </form>
+    </div>
+</body>
+</html>
