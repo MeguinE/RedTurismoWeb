@@ -22,6 +22,7 @@ if (!isset($_SESSION['usuario'])) {
                 <li><a href="pagos.php" class="text-blue-500">Registrar Pagos</a></li>
                 <li><a href="eventos.php" class="text-blue-500">Gestionar Eventos</a></li>
                 <li><a href="asistencia.php" class="text-blue-500">Registrar Asistencia</a></li>
+                <li><a href="estatus.php" class="text-blue-500">Estatutos</a></li>
             </ul>
         </nav>
     </div>
