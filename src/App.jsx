@@ -1,5 +1,5 @@
 import React from 'react';
-import Dashboard from './Dashboard.jsx';  // Asegúrate de tener el archivo Dashboard.js
+import Dashboard from './dashbord/Dashboard';  // Asegúrate de tener el archivo Dashboard.js
 
 function App() {
   return (
