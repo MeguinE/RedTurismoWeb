@@ -17,13 +17,25 @@ const Dashboard = () => {
     ],
   };
 
+ const menu = {
+data : [{
+        "label": 'Inicio',
+        "router": ''
+    }]
+}
+
+ // roles - admin (registar eliminar y modificaar informacion de socios, visualizar y gestionar los estados, consultar estados especificos de cada socio
+// incluyendo adeudos, gestion de eventos feha, lugar, descripcion y tipo, confirmar la asistencia de los socios, visualizar la asistencia, registrar pagos y adeudos
+// gestion de estatus, crear y actualizar estatutos internos), 
+// socio (cosulta de informacion personal, revisar estado, consultar detalles de pago y de adeudos, enviar sugerencias o mensajes), 
+
   return (
     <div className="min-h-screen bg-gray-50 flex">
       {/* Barra lateral */}
       <div className="bg-blue-900 text-white w-64 p-4">
         <h2 className="text-3xl font-semibold">Turismo Asociado</h2>
         <ul className="mt-8 space-y-4">
-          <li className="cursor-pointer">Inicio</li>
+          <li className="cursor-pointer" >Inicio</li>
           <li className="cursor-pointer">Socios</li>
           <li className="cursor-pointer">Actividades</li>
           <li className="cursor-pointer">Pagos</li>
