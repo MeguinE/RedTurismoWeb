@@ -1,94 +1,131 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Line } from 'react-chartjs-2';
 import 'chart.js/auto';
 
 const Dashboard = () => {
-  // Datos para el gráfico de ingresos mensuales
-  const data = {
-    labels: ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic'],
+  // Estado para almacenar los datos
+  const [data, setData] = useState({
+    labels: [],
     datasets: [
       {
         label: 'Ingresos Mensuales',
-        data: [5000, 7000, 6000, 7500, 8000, 9000, 8500, 10000, 12000, 15000, 16000, 18000],
+        data: [],
         fill: false,
-        borderColor: 'rgb(75, 192, 192)',
+        borderColor: '#1E3A5F', // Azul Montaña
         tension: 0.1,
       },
     ],
-  };
+  });
 
- const menu = {
-data : [{
-        "label": 'Inicio',
-        "router": ''
-    }]
-}
+  const [totalSocios, setTotalSocios] = useState(0);
+  const [nuevosSocios, setNuevosSocios] = useState(0);
+  const [ingresosMembresias, setIngresosMembresias] = useState(0);
+  const [actividadesRecientes, setActividadesRecientes] = useState([]);
+  const [renovacionesPendientes, setRenovacionesPendientes] = useState([]);
 
- // roles - admin (registar eliminar y modificaar informacion de socios, visualizar y gestionar los estados, consultar estados especificos de cada socio
-// incluyendo adeudos, gestion de eventos feha, lugar, descripcion y tipo, confirmar la asistencia de los socios, visualizar la asistencia, registrar pagos y adeudos
-// gestion de estatus, crear y actualizar estatutos internos), 
-// socio (cosulta de informacion personal, revisar estado, consultar detalles de pago y de adeudos, enviar sugerencias o mensajes), 
+
+  // Consumir los datos del backend usando useEffect
+  useEffect(() => {
+    // Reemplaza con la URL de la API
+    fetch('/api/dashboard-data')
+      .then((response) => response.json())
+      .then((data) => {
+        // Asignar los datos recibidos al estado
+        setData({
+          labels: data.labels,
+          datasets: [
+            {
+              label: 'Ingresos Mensuales',
+              data: data.ingresosMensuales,
+              fill: false,
+              borderColor: '#1E3A5F', // Azul Montaña
+              tension: 0.1,
+            },
+          ],
+        });
+        setTotalSocios(data.totalSocios);
+        setNuevosSocios(data.nuevosSocios);
+        setIngresosMembresias(data.ingresosMembresias);
+        setActividadesRecientes(data.actividadesRecientes); // Nuevas actividades
+        setRenovacionesPendientes(data.renovacionesPendientes); // Nuevas renovaciones
+      })
+      .catch((error) => console.error('Error fetching data:', error));
+  }, []); // Solo se ejecuta una vez cuando el componente se monta
 
   return (
     <div className="min-h-screen bg-gray-50 flex">
-      {/* Barra lateral */}
-      <div className="bg-blue-900 text-white w-64 p-4">
-        <h2 className="text-3xl font-semibold">Turismo Asociado</h2>
-        <ul className="mt-8 space-y-4">
-          <li className="cursor-pointer" >Inicio</li>
-          <li className="cursor-pointer">Socios</li>
-          <li className="cursor-pointer">Actividades</li>
-          <li className="cursor-pointer">Pagos</li>
-          <li className="cursor-pointer">Reportes</li>
-        </ul>
-      </div>
-
+      
       {/* Contenedor principal */}
-      <div className="flex-1 p-6">
+      <div className="flex-1 p-4">
         {/* Header */}
-        <div className="flex justify-between items-center mb-8">
-          <h1 className="text-4xl font-bold">Dashboard</h1>
+        <div className="flex justify-between items-center mb-3">
+          <h1 className="text-4xl font-bold text-[#1E3A5F]">Bienvenido</h1>
         </div>
 
         {/* KPIs */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
-          <div className="bg-white p-6 rounded-lg shadow-md text-center">
-            <h3 className="text-xl text-gray-500">Total Socios</h3>
-            <p className="text-3xl font-semibold">1,423</p>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-3">
+          <div className="bg-[#ceffc2] p-6 rounded-lg shadow-md text-center">
+            <h3 className="text-xl text-[#1E3A5F]">Total Socios</h3>
+            <p className="text-3xl font-semibold">{totalSocios}</p>
           </div>
-          <div className="bg-white p-6 rounded-lg shadow-md text-center">
-            <h3 className="text-xl text-gray-500">Nuevos Socios (Mes)</h3>
-            <p className="text-3xl font-semibold">12</p>
+          <div className="bg-[#ceffc2] p-6 rounded-lg shadow-md text-center">
+            <h3 className="text-xl text-[#1E3A5F]">Nuevos Socios</h3>
+            <p className="text-3xl font-semibold">{nuevosSocios}</p>
           </div>
-          <div className="bg-white p-6 rounded-lg shadow-md text-center">
-            <h3 className="text-xl text-gray-500">Ingresos por Membresías</h3>
-            <p className="text-3xl font-semibold">$15,000</p>
+          <div className="bg-[#ceffc2] p-6 rounded-lg shadow-md text-center">
+            <h3 className="text-xl text-[#1E3A5F]">Ingresos por Membresías</h3>
+            <p className="text-3xl font-semibold">${ingresosMembresias}</p>
           </div>
         </div>
 
         {/* Gráfico de Ingresos Mensuales */}
-        <div className="bg-white p-6 rounded-lg shadow-md mb-8">
-          <h3 className="text-xl font-semibold mb-4">Ingresos Mensuales</h3>
-          <Line data={data} />
+        <div className="bg-[#ceffc2] p-6 rounded-lg shadow-lg mb-8">
+          <h3 className="text-2xl font-semibold text-[#1E3A5F] mb-4">Ingresos Mensuales</h3>
+
+          <div className="relative h-80">
+            <Line
+              data={data}
+              options={{
+                responsive: true,
+                maintainAspectRatio: false,
+                scales: {
+                  x: {
+                    ticks: {
+                      color: '#1E3A5F',
+                    },
+                  },
+                  y: {
+                    ticks: {
+                      color: '#1E3A5F',
+                    },
+                  },
+                },
+              }}
+            />
+          </div>
+
+          <div className="text-sm text-[#1E3A5F] mt-4">
+            <p>El gráfico muestra los ingresos mensuales, lo que ayuda a realizar un seguimiento de la rentabilidad y el crecimiento de la empresa.</p>
+          </div>
         </div>
 
         {/* Actividades Recientes */}
-        <div className="bg-white p-6 rounded-lg shadow-md mb-8">
-          <h3 className="text-xl font-semibold mb-4">Actividades Recientes</h3>
+        <div className="bg-[#ceffc2] p-6 rounded-lg shadow-md mb-8">
+          <h3 className="text-xl font-semibold text-[#1E3A5F] mb-4">Actividades Recientes</h3>
           <ul className="space-y-4">
-            <li>Excursión a la playa - 15 de diciembre</li>
-            <li>Reunión mensual - 5 de diciembre</li>
-            <li>Taller de fotografía - 22 de noviembre</li>
+            {actividadesRecientes.map((actividad, index) => (
+              <li key={index}>{actividad.nombre} - {actividad.fecha}</li>
+            ))}
           </ul>
         </div>
 
         {/* Socios con Renovación Pendiente */}
-        <div className="bg-white p-6 rounded-lg shadow-md">
-          <h3 className="text-xl font-semibold mb-4">Renovación Pendiente</h3>
+        <div className="bg-[#ceffc2] p-6 rounded-lg shadow-md">
+          <h3 className="text-xl font-semibold text-[#1E3A5F] mb-4">Renovación Pendiente</h3>
           <ul className="space-y-4">
-            <li>Juan Pérez - Renovación: 15/12/2024</li>
-            <li>Maria García - Renovación: 01/01/2025</li>
-            <li>Carlos López - Renovación: 20/12/2024</li>
+            {renovacionesPendientes.map((renovacion, index) => (
+              <li key={index}>{renovacion.nombre} - Renovación: {renovacion.fecha}</li>
+            ))}
           </ul>
         </div>
       </div>
