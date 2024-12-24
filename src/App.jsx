@@ -12,7 +12,7 @@ function App() {
 
         {/* Rutas que requieren el Layout con el Sidebar */}
         <Route element={<Layout />}>
-          <Route path="/Dashboard" element={<Dashboard />} />  {/* Ruta principal */}
+          <Route path="/dashboard" element={<Dashboard />} />  {/* Ruta principal */}
           {/* Otras rutas con el panel lateral (sidebar) */}
 
           {/* <Route path="/socios" element={<Socios />} />
