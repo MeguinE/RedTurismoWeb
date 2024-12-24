@@ -17,6 +17,11 @@
 @tailwind components;
 @tailwind utilities;
 
+body {
+    background-image: url('../src/img/page.svg');
+    background-repeat: no-repeat !important;
+}
+
 a {
   font-weight: 500;
   color: #646cff;
@@ -67,4 +72,14 @@ button:focus-visible {
   button {
     background-color: #f9f9f9;
   }
+}
+
+
+.formulario-login {
+    display: grid;
+    padding: 3rem;
+    width: 50%;
+    position: absolute;
+    right: 0;
+    top: 12rem;
 }
