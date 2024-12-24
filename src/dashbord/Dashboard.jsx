@@ -11,7 +11,7 @@ const Dashboard = () => {
         label: 'Ingresos Mensuales',
         data: [],
         fill: false,
-        borderColor: '#1E3A5F', // Azul Montaña
+        borderColor: '#4F46E5',
         tension: 0.1,
       },
     ],
@@ -38,7 +38,7 @@ const Dashboard = () => {
               label: 'Ingresos Mensuales',
               data: data.ingresosMensuales,
               fill: false,
-              borderColor: '#1E3A5F', // Azul Montaña
+              borderColor: '#4F46E5',
               tension: 0.1,
             },
           ],
@@ -53,19 +53,19 @@ const Dashboard = () => {
   }, []); // Solo se ejecuta una vez cuando el componente se monta
 
   return (
-    <div className="min-h-screen bg-gray-50 flex">
-      
+    <div className="min-h-screen bg-gray-100 flex">
+
       {/* Contenedor principal */}
-      <div className="flex-1 p-4">
+      <div className="flex-1 p-6 space-y-6">
         {/* Header */}
-        <div className="flex justify-between items-center mb-3">
-          <h1 className="text-4xl font-bold text-[#1E3A5F]">Bienvenido</h1>
+        <div className="flex justify-between items-center mb-6">
+          <h1 className="text-4xl font-bold text-[#4F46E5]">Bienvenido</h1>
         </div>
 
         {/* KPIs */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-3">
-          <div className="bg-[#ceffc2] p-6 rounded-lg shadow-md text-center">
-            <h3 className="text-xl text-[#1E3A5F]">Total Socios</h3>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
+          <div className="bg-[#E9E7FF] p-6 rounded-lg shadow-md text-center">
+            <h3 className="text-xl text-[#4F46E]">Total Socios</h3>
             <p className="text-3xl font-semibold">{totalSocios}</p>
           </div>
           <div className="bg-[#ceffc2] p-6 rounded-lg shadow-md text-center">
