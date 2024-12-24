@@ -12,15 +12,16 @@ function App() {
           {/* Definir las rutas aquí */}
           <Route path="/" element={<Login/>}/>
           <Route path="/dashboard" element={<Dashboard />} />  {/* Ruta principal */}
-          {/* Agrega más rutas para otras páginas si es necesario */}
+          {/* Agrega más rutas para otras páginas si es necesario */} 
           {/* <Route path="/socios" element={<Socios />} />
           <Route path="/actividades" element={<Actividades />} />
           <Route path="/pagos" element={<Pagos />} />
           <Route path="/estatutos" element={<Estatutos />} /> */}
-        </Routes>
-      </Layout>
+        </Route>
+      </Routes>
     </Router>
   );
 }
+
 
 export default App;
