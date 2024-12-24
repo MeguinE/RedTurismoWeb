@@ -2,7 +2,7 @@ import React from 'react';
 
 const Sidebar = () => {
   const menu = [
-    { label: 'Inicio', router: '/Dashboard' },
+    { label: 'Inicio', router: '/dashboard' },
     { label: 'Socios', router: '' },
     { label: 'Actividades', router: '' },
     { label: 'Pagos', router: '' },

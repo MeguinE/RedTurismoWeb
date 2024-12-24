@@ -15,8 +15,8 @@
 
 
 body {
-  background-image: url('../src/img/page.svg');
-  background-repeat: no-repeat !important;
+    background-image: url('../src/img/page.svg');
+    background-repeat: no-repeat !important;
 }
 
 a {
