@@ -6,19 +6,24 @@ import Layout from './components/Layoud';  // Asegúrate de tener el archivo Lay
 function App() {
   return (
     <Router>
-      <Layout>  {/* Envolvemos el contenido dentro del Layout para mantener la barra lateral visible */}
-        <Routes>
-          {/* Definir las rutas aquí */}
+      <Routes>
+        {/* Rutas que no requieren el Layout (sin Sidebar) */}
+        <Route path="/login" element={<Login />} />
+
+        {/* Rutas que requieren el Layout con el Sidebar */}
+        <Route element={<Layout />}>
           <Route path="/" element={<Dashboard />} />  {/* Ruta principal */}
-          {/* Agrega más rutas para otras páginas si es necesario */}
+          {/* Otras rutas con el panel lateral (sidebar) */}
+          
           {/* <Route path="/socios" element={<Socios />} />
           <Route path="/actividades" element={<Actividades />} />
           <Route path="/pagos" element={<Pagos />} />
           <Route path="/estatutos" element={<Estatutos />} /> */}
-        </Routes>
-      </Layout>
+        </Route>
+      </Routes>
     </Router>
   );
 }
+
 
 export default App;
