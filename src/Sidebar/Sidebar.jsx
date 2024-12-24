@@ -2,11 +2,11 @@ import React from 'react';
 
 const Sidebar = () => {
   const menu = [
-    { label: 'Inicio', router: '/' },
-    { label: 'Socios', router: '/socios' },
-    { label: 'Actividades', router: '/actividades' },
-    { label: 'Pagos', router: '/pagos' },
-    { label: 'Estatutos', router: '/estatutos' },
+    { label: 'Inicio', router: '/Dashboard' },
+    { label: 'Socios', router: '' },
+    { label: 'Actividades', router: '' },
+    { label: 'Pagos', router: '' },
+    { label: 'Estatutos', router: '' },
   ];
 
   return (
